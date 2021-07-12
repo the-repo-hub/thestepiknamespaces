@@ -1,2 +1,2 @@
-answer = [val for val in 'not amazing' if val not in 'aeiou']
+answer = [val for val in 'amazing' if val not in 'aeiou']
 print(answer)
