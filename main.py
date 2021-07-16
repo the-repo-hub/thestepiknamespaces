@@ -21,7 +21,7 @@ def get(namespace, var):
 
 
 i = int(input())
-dictionary = {'global': {'parent': None, 'variables': set()}}  # honorably steal from comments
+dictionary = {'global': {'parent': None, 'variables': set()}}  # honorably stolen from comments
 get_list = []
 for j in range(i):
     command, namespace, var = input().split()
