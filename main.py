@@ -1,14 +1,6 @@
-def add(namespace, var):
-    dictionary[namespace]['variables'].add(var)
-    return 0
-
-
-def create(namespace, var):
-    dictionary[namespace] = {'parent': var, 'variables': set()}
-    return dictionary[namespace]
-
-
 def get(namespace, var):
+    if namespace not in dictionary.keys():
+        return None
     if var in dictionary[namespace]['variables']:
         return namespace
     elif dictionary[namespace]['parent'] is not None:
@@ -26,9 +18,9 @@ get_list = []
 for j in range(i):
     command, namespace, var = input().split()
     if command == 'add':
-        add(namespace, var)
+        dictionary[namespace]['variables'].add(var)
     elif command == 'create':
-        create(namespace, var)
+        dictionary[namespace] = {'parent': var, 'variables': set()}
     elif command == 'get':
         get_list.append(get(namespace, var))
 for k in get_list:
