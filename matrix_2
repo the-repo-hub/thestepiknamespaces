@@ -1,0 +1,36 @@
+matrix = []
+the_last_y = 0
+while True:
+    lst = [int(i) for i in input().split() if i != 'end']
+    if lst:
+        the_last_y += 1
+    if not lst:
+        break
+    matrix.append(lst)
+the_last_x = len(matrix[0])
+x = 0
+y = 0
+new_matrix = []
+summ = 0
+for lst_in_matrix in matrix:
+    for value in lst_in_matrix:
+        if x + 1 > the_last_x - 1 and y + 1 > the_last_y - 1:
+            summ = matrix[y][x-1] + matrix[y][0] + matrix[0][x] + matrix[y-1][x]
+        elif x + 1 > the_last_x - 1:
+            summ = matrix[y][x-1] + matrix[y][0] + matrix[y + 1][x] + matrix[y-1][x]
+        elif y + 1 > the_last_y - 1:
+            summ = matrix[y][x-1] + matrix[y][x+1] + matrix[0][x] + matrix[y-1][x]
+        else:
+            summ = matrix[y][x - 1] + matrix[y][x + 1] + matrix[y + 1][x] + matrix[y - 1][x]
+        # summ = matrix[y][x - 1] + matrix[y][x + 1] + matrix[y + 1][x] + matrix[y - 1][x]
+        lst.append(summ)
+        if x == the_last_x - 1:
+            new_matrix.append(lst)
+            lst = []
+        x += 1
+    x = 0
+    y += 1
+for i in new_matrix:
+    for j in i:
+        print(j, end=' ')
+    print('')
